@@ -26,6 +26,12 @@ export default class Contact extends Vue {
       icon: 'linkedin',
       link: 'https://www.linkedin.com/in/brandon-cash-7b643285/',
     },
+    {
+      name: 'GitHub',
+      description: 'View the source of this site on GitHub',
+      icon: 'github',
+      link: 'https://github.com/brandoncash/brandon.cash',
+    },
   ];
 }
 </script>

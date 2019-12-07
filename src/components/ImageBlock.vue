@@ -31,7 +31,7 @@ export default class ImageBlock extends Vue {
     this.observer.observe(this.$el);
   }
 
-  destroyed() {
+  private destroyed() {
     this.observer.disconnect();
   }
 }

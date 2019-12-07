@@ -30,7 +30,7 @@ export default class VideoBlock extends Vue {
     this.observer.observe(this.$el);
   }
 
-  destroyed() {
+  private destroyed() {
     this.observer.disconnect();
   }
 }
