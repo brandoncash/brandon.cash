@@ -1,0 +1,14 @@
+@import 'sass-breakpoints';
+
+$blue: #3c30ff;
+$black: #111;
+$white: #fcfcfc;
+$gray-light: #e9e9e9;
+$gray-mid: #555;
+
+$breakpoints: (
+  'xs': 0px,    //targeting <568px devices (e.g. all iPhones <6)
+  'sm': 568px,  //targeting >=568px devices (e.g. iPhones >=6)
+  'md': 768px,  //targeting >=768px tablets (e.g. portrait iPad)
+  'lg': 1004px  //targeting >=1024px tablets (e.g. landscape iPad) and desktops but leaving room for the scroll bar
+);
