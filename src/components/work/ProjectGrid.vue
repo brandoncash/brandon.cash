@@ -1,40 +1,56 @@
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import caseStudies from '@/data/case-studies';
+import { Component, Vue, Prop } from 'vue-property-decorator';
 
 @Component
-export default class CaseStudies extends Vue {
-  private caseStudies: any = caseStudies;
+export default class ProjectGrid extends Vue {
+  @Prop(Array) private sourceData!: any[];
+  @Prop(String) private imageDirectory!: string;
+
+  private projectLink(project: any) {
+    if (project.link) {
+      return {
+        is: 'a',
+        href: project.link,
+        target: '_blank',
+      };
+    } else {
+      return {
+        is: 'router-link',
+        to: `/work/${project.slug}`,
+      };
+    }
+  }
 }
 </script>
 
 <template>
-  <section class="case-studies-grid">
-    <router-link
-      v-for="caseStudy in caseStudies"
-      :key="caseStudy.name"
+  <section class="project-grid">
+    <component
+      v-for="project in sourceData"
+      :key="project.name"
+      v-bind="projectLink(project)"
+      v-bind:is="projectLink(project).is"
       class="grid-item"
-      :to="`/work/${caseStudy.slug}`"
     >
       <div class="grid-image">
         <img
-          :src="`/assets/case-studies/${caseStudy.slug}.jpg`"
-          :alt="caseStudy.name"
+          :src="`${imageDirectory}/${project.slug}.jpg`"
+          :alt="project.name"
         />
       </div>
 
       <div class="exterior">
-        <div class="study-info">
-          <div class="name">{{ caseStudy.name }}</div>
-          <div class="client">{{ caseStudy.client }}</div>
+        <div class="project-info">
+          <div class="name">{{ project.name }}</div>
+          <div class="client">{{ project.client }}</div>
         </div>
       </div>
-    </router-link>
+    </component>
   </section>
 </template>
 
 <style lang="scss" scoped>
-.case-studies-grid {
+.project-grid {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -77,7 +93,7 @@ export default class CaseStudies extends Vue {
   }
 
   @include breakpoint('md') {
-    height: 32.3vw;
+    height: 32.2vw;
   }
 
   img {
@@ -120,7 +136,7 @@ export default class CaseStudies extends Vue {
   }
 }
 
-.study-info {
+.project-info {
   transform: translateY(0);
   transition: transform 0.5s ease-in-out;
 
@@ -152,7 +168,7 @@ export default class CaseStudies extends Vue {
     }
   }
 
-  .study-info {
+  .project-info {
     @include breakpoint('md') {
       transform: translateY(0vw);
     }

@@ -2,8 +2,10 @@
 import { Component, Vue } from 'vue-property-decorator';
 import ContentBlock from '@/components/ContentBlock.vue';
 import BrandGrid from '@/components/work/BrandGrid.vue';
-import CaseStudies from '@/components/work/CaseStudies.vue';
+import ProjectGrid from '@/components/work/ProjectGrid.vue';
 import SiteFooter from '@/components/SiteFooter.vue';
+import caseStudies from '@/data/case-studies';
+import openSource from '@/data/open-source';
 
 @Component({
   metaInfo: {
@@ -12,11 +14,13 @@ import SiteFooter from '@/components/SiteFooter.vue';
   components: {
     ContentBlock,
     BrandGrid,
-    CaseStudies,
+    ProjectGrid,
     SiteFooter,
   },
 })
 export default class Work extends Vue {
+  private caseStudyProjects = caseStudies;
+  private openSourceProjects = openSource;
 }
 </script>
 
@@ -40,7 +44,21 @@ export default class Work extends Vue {
       <p>Below are a few amazing clients I have had the honor of working with.</p>
     </ContentBlock>
 
-    <CaseStudies />
+    <ProjectGrid
+      :sourceData="caseStudyProjects"
+      imageDirectory="/assets/case-studies"
+    />
+
+    <ContentBlock>
+      <h2>Open Source</h2>
+
+      <p>I enjoy sharing my learning experiences on <a href="https://codepen.io/brandoncash" target="_blank">CodePen</a> and showcasing open source projects on <a href="https://github.com/brandoncash" target="_blank">GitHub</a>.</p>
+    </ContentBlock>
+
+    <ProjectGrid
+      :sourceData="openSourceProjects"
+      imageDirectory="/assets/open-source"
+    />
 
     <SiteFooter />
   </main>
