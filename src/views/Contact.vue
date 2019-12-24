@@ -171,6 +171,7 @@ export default class Contact extends Vue {
   padding: 7.5vw 2rem;
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.4);
   background-color: $white;
+  text-align: center;
   opacity: 0;
   transition: opacity 0.5s ease-in-out;
   pointer-events: none;
