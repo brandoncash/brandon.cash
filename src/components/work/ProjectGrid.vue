@@ -42,7 +42,7 @@ export default class ProjectGrid extends Vue {
       <div class="exterior">
         <div class="project-info">
           <div class="name">{{ project.name }}</div>
-          <div class="client">{{ project.client }}</div>
+          <div class="subtitle">{{ project.subtitle }}</div>
         </div>
       </div>
     </component>
@@ -74,7 +74,7 @@ export default class ProjectGrid extends Vue {
 
   @include breakpoint('sm') {
     width: 44%;
-    margin-bottom: 0;
+    margin-bottom: 3vw;
   }
 
   @include breakpoint('md') {
@@ -191,7 +191,7 @@ export default class ProjectGrid extends Vue {
   }
 }
 
-.client {
+.subtitle {
   font-size: 1.6rem;
 
   @include breakpoint('md') {
