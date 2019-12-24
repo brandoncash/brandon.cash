@@ -32,6 +32,7 @@ export default class TakeOrTreat extends Vue {
       title="Take or Treat"
       subtitle="Client: Hershey"
       image="/assets/case-studies/take-or-treat/take-or-treat-header.jpg"
+      imageAlt="A furry creature's hand playing with Take or Treat on a mobile device"
     />
 
     <IntroBlock>

@@ -32,6 +32,7 @@ export default class SettleYourScore extends Vue {
       title="Settle Your Score"
       subtitle="Client: Russell Athletic"
       image="/assets/case-studies/settle-your-score/settle-your-score-header.jpg"
+      imageAlt="A high school football team lined up"
     />
 
     <IntroBlock>

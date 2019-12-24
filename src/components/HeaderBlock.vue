@@ -6,6 +6,7 @@ export default class HeaderBlock extends Vue {
   @Prop(String) private title!: string;
   @Prop(String) private subtitle!: string;
   @Prop(String) private image!: string;
+  @Prop(String) private imageAlt!: string;
   private windowScroll: number = 0;
   private loaded: boolean = false;
 
@@ -58,6 +59,7 @@ export default class HeaderBlock extends Vue {
       }"
       :src="image"
       :style="`transform: scale(${scaleAmount});`"
+      :alt="imageAlt"
     />
     <h1 class="title">{{ title }}</h1>
     <h2 class="subtitle">{{ subtitle }}</h2>

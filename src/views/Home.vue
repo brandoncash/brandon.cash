@@ -26,6 +26,7 @@ export default class Home extends Vue {
       title="Brandon Cash"
       subtitle="Interactive Developer"
       image="/assets/brandon-cash.jpg"
+      imageAlt="A headshot of Brandon Cash"
     />
 
     <IntroBlock>
