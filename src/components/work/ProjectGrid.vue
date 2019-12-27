@@ -12,6 +12,7 @@ export default class ProjectGrid extends Vue {
         is: 'a',
         href: project.link,
         target: '_blank',
+        rel: 'noreferrer',
       };
     } else {
       return {
