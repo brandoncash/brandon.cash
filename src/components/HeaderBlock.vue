@@ -7,6 +7,7 @@ export default class HeaderBlock extends Vue {
   @Prop(String) private subtitle!: string;
   @Prop(String) private image!: string;
   @Prop(String) private imageAlt!: string;
+  private imageElement!: HTMLElement;
   private windowScroll: number = 0;
   private loaded: boolean = false;
 
@@ -22,6 +23,10 @@ export default class HeaderBlock extends Vue {
     };
   }
 
+  private mounted() {
+    this.imageElement = this.$refs.background as HTMLElement;
+  }
+
   private destroyed() {
     window.removeEventListener('scroll', this.eventHandler);
   }
@@ -29,6 +34,7 @@ export default class HeaderBlock extends Vue {
   private eventHandler() {
     // RAF helps ensure a higher framerate
     window.requestAnimationFrame(() => {
+      this.imageElement.style.transform = `scale(${this.scaleAmount})`;
       this.windowScroll = window.scrollY;
     });
   }
@@ -53,12 +59,12 @@ export default class HeaderBlock extends Vue {
 <template>
   <header class="header-block">
     <img
+      ref="background"
       class="background"
       :class="{
         loaded: loaded,
       }"
       :src="image"
-      :style="`transform: scale(${scaleAmount});`"
       :alt="imageAlt"
     />
     <h1 class="title">{{ title }}</h1>
