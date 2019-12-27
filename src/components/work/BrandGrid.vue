@@ -16,7 +16,7 @@ export default class BrandGrid extends Vue {
       class="grid-item"
     >
       <img
-        :src="require(`@/assets/brands/${brand.logo}.png`)"
+        :src="`assets/brands/${brand.logo}.svg`"
         :alt="brand.name"
       />
     </div>
@@ -40,14 +40,20 @@ export default class BrandGrid extends Vue {
   align-items: center;
   border: 0;
   background-color: transparent;
-  opacity: 0.6;
   transform: scale(0.9);
-  animation: brand-reveal 1s ease-in-out 30ms 1 both;
+  transition: filter 0.25s ease-in-out,
+    transform 0.25s ease-in-out;
+  filter: grayscale(1);
   will-change: opacity, transform;
+
+  &:hover {
+    filter: grayscale(0);
+    transform: scale(1.1);
+  }
 
   // Stagger the intro animation
   @for $i from 0 to 20 {
-    &:nth-child(#{$i}) {
+    &:nth-child(#{$i}) img {
       animation-delay: 300ms + ($i * 200ms);
     }
   }
@@ -61,12 +67,17 @@ export default class BrandGrid extends Vue {
 .grid-item img {
   width: 65%;
   margin: 0 auto;
+  opacity: 0.6;
+  animation: brand-reveal 1s ease-in-out 30ms 1 both;
 }
 
 @keyframes brand-reveal {
   0% {
     opacity: 0.6;
     transform: scale(0.9);
+  }
+  50% {
+    transform: scale(1.05);
   }
   100% {
     opacity: 1;
