@@ -1,5 +1,11 @@
 const openSource: any = [
   {
+    slug: 'vue-node-graph',
+    name: 'Vue Node Graph',
+    subtitle: 'Vue component library',
+    link: 'https://github.com/brandoncash/vue-node-graph',
+  },
+  {
     slug: 'css-image-treatments',
     name: 'Pure CSS Image Treatments',
     subtitle: 'Styled images',
@@ -10,12 +16,6 @@ const openSource: any = [
     name: 'three-lincoln',
     subtitle: 'WebGL Museum Art',
     link: 'https://github.com/brandoncash/three-lincoln',
-  },
-  {
-    slug: 'interactive-css-campfire',
-    name: 'Interactive CSS Campfire',
-    subtitle: 'Advanced CSS art',
-    link: 'https://codepen.io/brandoncash/pen/bWQrZq',
   },
   {
     slug: 'elements',
