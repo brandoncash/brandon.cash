@@ -58,6 +58,7 @@ export default class Contact extends Vue {
           :key="contactIndex"
           class="contact-item"
           :href="contact.link"
+          target="_blank"
         >
           <div class="interior">
             <img
