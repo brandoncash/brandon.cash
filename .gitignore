@@ -1,6 +1,7 @@
 .DS_Store
 node_modules
 /dist
+*.pdf
 
 # A few assets that belong to other entities
 /public/assets/case-studies
