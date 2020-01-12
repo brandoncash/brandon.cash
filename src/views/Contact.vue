@@ -34,7 +34,7 @@ export default class Contact extends Vue {
     },
     {
       name: 'GitHub',
-      description: 'View the source of this site on GitHub',
+      description: 'View the source of this site on GitHub.',
       icon: 'github',
       link: 'https://github.com/brandoncash/brandon.cash',
     },
