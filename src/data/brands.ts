@@ -6,10 +6,10 @@ const brands: any = [
     { name: 'Russell Athletic', logo: 'russell-athletic' },
     { name: 'Dairy Queen', logo: 'dairy-queen' },
     { name: 'Newell Rubbermaid', logo: 'rubbermaid' },
-    { name: 'McCain Foods', logo: 'mccain' },
-    { name: 'Spirit Airlines', logo: 'spirit-airlines' },
-    { name: 'Shelter Insurance', logo: 'shelter-insurance' },
     { name: 'Trimble', logo: 'trimble' },
+    { name: 'Spirit Airlines', logo: 'spirit-airlines' },
+    { name: 'Tyson Foods', logo: 'tyson' },
+    { name: 'Shelter Insurance', logo: 'shelter-insurance' },
     { name: 'Cargill', logo: 'cargill' },
 ];
 
