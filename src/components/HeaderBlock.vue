@@ -7,7 +7,7 @@ export default class HeaderBlock extends Vue {
   @Prop(String) private subtitle!: string;
   @Prop(String) private image!: string;
   @Prop(String) private imageAlt!: string;
-  private imageElement!: HTMLElement;
+  private blockElement!: HTMLElement;
   private windowScroll: number = 0;
   private loaded: boolean = false;
 
@@ -20,11 +20,13 @@ export default class HeaderBlock extends Vue {
 
     img.onload = () => {
       this.loaded = true;
+      this.blockElement.style.transform = `translate3d(0, ${this.translateAmount}%, 0)`;
+      this.windowScroll = window.scrollY;
     };
   }
 
   private mounted() {
-    this.imageElement = this.$refs.background as HTMLElement;
+    this.blockElement = this.$refs.block as HTMLElement;
   }
 
   private destroyed() {
@@ -34,32 +36,34 @@ export default class HeaderBlock extends Vue {
   private eventHandler() {
     // RAF helps ensure a higher framerate
     window.requestAnimationFrame(() => {
-      this.imageElement.style.transform = `scale(${this.scaleAmount})`;
+      this.blockElement.style.transform = `translate3d(0, ${this.translateAmount}%, 0)`;
       this.windowScroll = window.scrollY;
     });
   }
 
-  get scaleAmount() {
-    // Never scale below 1.0
-    if (this.windowScroll < 0) {
-      return 1;
-    }
+  get translateAmount() {
+    let translateAmount = 0;
 
-    // High scale amount on small screens
+    // High translate amount on small screens
     if (window.innerWidth < 600) {
-      return 1 + (this.windowScroll * 0.001);
+      translateAmount = this.windowScroll * 0.1;
     }
 
-    // Low scale amount on larger screens
-    return 1 + (this.windowScroll * 0.0002);
+    // Low translate amount on larger screens
+    translateAmount = this.windowScroll * 0.05;
+
+    // Cap translation betweeen 0% and 40%
+    return Math.max(Math.min(translateAmount, 40), 0);
   }
 }
 </script>
 
 <template>
-  <header class="header-block">
+  <header
+    class="header-block"
+    ref="block"
+  >
     <img
-      ref="background"
       class="background"
       :class="{
         loaded: loaded,
@@ -84,6 +88,7 @@ export default class HeaderBlock extends Vue {
   background-color: $blue;
   color: $white;
   text-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
+  transform: translate3d(0, 0, 0);
 
   @include breakpoint('md') {
     position: relative;
