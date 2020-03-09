@@ -15,12 +15,6 @@ import SiteFooter from '@/components/SiteFooter.vue';
 export default class Contact extends Vue {
   private contactLinks: any = [
     {
-      name: 'Resume',
-      description: 'More details about my skills.',
-      icon: 'resume',
-      link: '/resume.pdf',
-    },
-    {
       name: 'Email',
       description: 'Get in touch the old fashioned way.',
       icon: 'email',
@@ -47,10 +41,6 @@ export default class Contact extends Vue {
     <ContentBlock>
       <h1>Contact</h1>
       <h2>Get in Touch</h2>
-
-      <p>
-        I am currently seeking a full-time position as a senior web developer. If <router-link to="skills">my set of skills</router-link> will augment your team, please use one of the below links to get in touch!
-      </p>
 
       <div class="contact-grid">
         <a
